@@ -12,6 +12,5 @@ local.properties
 build
 symlinked-dist
 android-lv2-binaries.zip
-aap_metadata.xml
 dependencies
 

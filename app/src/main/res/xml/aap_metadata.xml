@@ -1,0 +1,65 @@
+<plugins xmlns="urn:org.androidaudioplugin.core" xmlns:pp="urn:org.androidaudioplugin.port">
+  <plugin backend="LV2" name="AIDA-X" category="Effect" developer="AIDA DSP" unique-id="lv2:http://aidadsp.cc/plugins/aidadsp-bundle/rt-neural-loader" library="libandroidaudioplugin-lv2.so" entrypoint="GetAndroidAudioPluginFactoryLV2Bridge" gui:ui-view-factory="org.androidaudioplugin.ui.compose.ComposeAudioPluginViewFactory" xmlns:gui="urn://androidaudioplugin.org/extensions/gui" >
+    <extensions>
+      <extension uri='urn://androidaudioplugin.org/extensions/plugin-info/v2' />
+      <extension uri='urn://androidaudioplugin.org/extensions/state/v2' />
+      <extension uri='urn://androidaudioplugin.org/extensions/parameters/v2' />
+      <extension uri='urn://androidaudioplugin.org/extensions/midi/v2' />
+      <extension uri='urn://androidaudioplugin.org/extensions/gui/v2' />
+    </extensions>
+    <parameters xmlns='urn://androidaudioplugin.org/extensions/parameters'>
+      <parameter id="4" name="ANTIALIASING" default="66.216003" minimum="0.000000" maximum="100.000000"  />
+      <parameter id="5" name="INPUT" default="0.000000" minimum="-12.000000" maximum="12.000000"  />
+      <parameter id="6" name="NETBYPASS" default="0"   type="boolean">
+        <enumeration name="true" value="1" />
+        <enumeration name="false" value="0" />
+      </parameter>
+      <parameter id="7" name="EQBYPASS" default="0"   type="boolean">
+        <enumeration name="true" value="1" />
+        <enumeration name="false" value="0" />
+      </parameter>
+      <parameter id="8" name="EQPOS" default="0" minimum="0" maximum="1" type="integer">
+        <enumeration name="PRE" value="1" />
+        <enumeration name="POST" value="0" />
+      </parameter>
+      <parameter id="9" name="BASS" default="0.000000" minimum="-8.000000" maximum="8.000000"  />
+      <parameter id="10" name="BFREQ" default="305.000000" minimum="75.000000" maximum="600.000000"  />
+      <parameter id="11" name="MID" default="0.000000" minimum="-8.000000" maximum="8.000000"  />
+      <parameter id="12" name="MFREQ" default="750.000000" minimum="150.000000" maximum="5000.000000"  />
+      <parameter id="13" name="MIDQ" default="0.707000" minimum="0.200000" maximum="5.000000"  />
+      <parameter id="14" name="MTYPE" default="0" minimum="0" maximum="1" type="integer">
+        <enumeration name="PEAK" value="0" />
+        <enumeration name="BANDPASS" value="1" />
+      </parameter>
+      <parameter id="15" name="TREBLE" default="0.000000" minimum="-8.000000" maximum="8.000000"  />
+      <parameter id="16" name="TFREQ" default="2000.000000" minimum="1000.000000" maximum="4000.000000"  />
+      <parameter id="17" name="DEPTH" default="0.000000" minimum="-8.000000" maximum="8.000000"  />
+      <parameter id="18" name="PRESENCE" default="0.000000" minimum="-8.000000" maximum="8.000000"  />
+      <parameter id="19" name="OUTPUT" default="0.000000" minimum="-15.000000" maximum="15.000000"  />
+      <parameter id="20" name="CABSIMBYPASS" default="0"   type="boolean">
+        <enumeration name="true" value="1" />
+        <enumeration name="false" value="0" />
+      </parameter>
+      <parameter id="21" name="Enabled" default="1"   type="boolean">
+        <enumeration name="true" value="1" />
+        <enumeration name="false" value="0" />
+      </parameter>
+      <parameter id="22" name="PARAM1" default="0.000000" minimum="0.000000" maximum="1.000000"  />
+      <parameter id="23" name="PARAM2" default="0.000000" minimum="0.000000" maximum="1.000000"  />
+      <parameter id="24" name="Model Input Size"  minimum="0.000000" maximum="3.000000" >
+        <enumeration name="ERROR" value="0" />
+        <enumeration name="SNAPSHOT" value="1" />
+        <enumeration name="WITH 1 PARAM" value="2" />
+        <enumeration name="WITH 2 PARAMS" value="3" />
+      </parameter>
+      <parameter id="25" name="Meter In"  minimum="0.000000" maximum="2.000000"  />
+      <parameter id="26" name="Meter Out"  minimum="0.000000" maximum="2.000000"  />
+    </parameters>
+    <ports>
+      <port direction='input' content='audio' name='Audio Input 1' />
+      <port direction='output' content='audio' name='Audio Output 1' />
+      <port direction='input' content='midi2' name='MIDI In' />
+      <port direction='output' content='midi2' name='MIDI Out' />
+    </ports>
+  </plugin>
+</plugins>
