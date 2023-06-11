@@ -1,0 +1,9 @@
+name: build dist
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-dist:
+    uses: atsushieno/aap-lv2/.github/workflows/build-dist-app.yml@main

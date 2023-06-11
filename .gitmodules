@@ -1,0 +1,6 @@
+[submodule "external/aap-lv2"]
+	path = external/aap-lv2
+	url = https://github.com/atsushieno/aap-lv2.git
+[submodule "external/AIDA-X"]
+	path = external/AIDA-X
+	url = https://github.com/AidaDSP/AIDA-X.git

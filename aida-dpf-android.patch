@@ -1,0 +1,127 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 536d30e..b775c03 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -44,7 +44,7 @@ endif()
+ dpf_add_plugin(AIDA-X
+   TARGETS ${TARGETS}
+   #NO_SHARED_RESOURCES
+-  UI_TYPE opengl
++  UI_TYPE external#sopengl
+   FILES_DSP
+     Files.cpp
+     modules/FFTConvolver/AudioFFT.cpp
+@@ -56,10 +56,11 @@ dpf_add_plugin(AIDA-X
+     src/aidadsp-plugin.cpp
+     src/Biquad.cpp
+     src/3rd-party.cpp
+-  FILES_UI
+-    Graphics.cpp
+-    src/aidadsp-ui.cpp)
++ )#FILES_UI
++  #  Graphics.cpp
++  #  src/aidadsp-ui.cpp)
+ 
++if (false)
+ dpf_add_plugin(AIDA-X-Standalone
+   TARGETS jack
+   #NO_SHARED_RESOURCES
+@@ -79,12 +80,13 @@ dpf_add_plugin(AIDA-X-Standalone
+     Graphics.cpp
+     modules/dpf-widgets/opengl/Blendish.cpp
+     src/aidadsp-ui.cpp)
++endif()
+ 
+-target_compile_definitions(dgl-opengl PUBLIC
+-  DGL_NAMESPACE=AidaDGL
+-  DGL_WINDOWS_ICON_ID=401
+-  NVG_FONT_TEXTURE_FLAGS=NVG_IMAGE_NEAREST
+-)
++#target_compile_definitions(dgl-opengl PUBLIC
++#  DGL_NAMESPACE=AidaDGL
++#  DGL_WINDOWS_ICON_ID=401
++#  NVG_FONT_TEXTURE_FLAGS=NVG_IMAGE_NEAREST
++#)
+ 
+ # hacky hack part 2
+ if(JUCE_EXTRA)
+@@ -115,6 +117,7 @@ target_include_directories(AIDA-X PUBLIC
+   ${CMAKE_BINARY_DIR}
+ )
+ 
++if(false)
+ target_include_directories(AIDA-X-Standalone PUBLIC
+   src
+   src/standalone
+@@ -125,6 +128,7 @@ target_include_directories(AIDA-X-Standalone PUBLIC
+   modules/rtneural
+   ${CMAKE_BINARY_DIR}
+ )
++endif()
+ 
+ # needed for enabling SSE in pffft
+ if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(i.86|x86|X86)$")
+@@ -143,7 +147,7 @@ if(CMAKE_SYSTEM_PROCESSOR MATCHES "riscv64")
+ endif()
+ 
+ target_link_libraries(AIDA-X PUBLIC RTNeural ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_OPTIONAL_LIBATOMIC})
+-target_link_libraries(AIDA-X-Standalone PUBLIC RTNeural ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_OPTIONAL_LIBATOMIC})
++#target_link_libraries(AIDA-X-Standalone PUBLIC RTNeural ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_OPTIONAL_LIBATOMIC})
+ 
+ # convert data into code
+ add_custom_command(
+@@ -163,6 +167,7 @@ add_custom_command(
+ )
+ 
+ # set up extra standalone details
++if(false)
+ set_target_properties(AIDA-X-Standalone-jack PROPERTIES OUTPUT_NAME "AIDA-X")
+ 
+ if(APPLE)
+@@ -196,3 +201,4 @@ add_custom_target(AIDA-X-Installer ALL
+   DEPENDS "${CMAKE_SOURCE_DIR}/utils/inno/AIDA-X-${CMAKE_PROJECT_VERSION}-win64-installer.exe"
+ )
+ endif()
++endif()
+Submodule modules/dpf contains modified content
+diff --git a/modules/dpf/cmake/DPF-plugin.cmake b/modules/dpf/cmake/DPF-plugin.cmake
+index 3890e925..3cb3b4f7 100644
+--- a/modules/dpf/cmake/DPF-plugin.cmake
++++ b/modules/dpf/cmake/DPF-plugin.cmake
+@@ -123,9 +123,9 @@ function(dpf_add_plugin NAME)
+   endif()
+ 
+   set(_dgl_has_ui OFF)
+-  if(_dgl_library OR _dgl_external)
+-    set(_dgl_has_ui ON)
+-  endif()
++  #if(_dgl_library OR _dgl_external)
++  #  set(_dgl_has_ui ON)
++  #endif()
+ 
+   ###
+   dpf__ensure_sources_non_empty(_dpf_plugin_FILES_COMMON)
+@@ -377,18 +377,20 @@ function(dpf__build_lv2 NAME HAS_UI MONOLITHIC)
+     endif()
+   endif()
+ 
+-  dpf__add_lv2_ttl_generator()
+-  add_dependencies("${NAME}-lv2" lv2_ttl_generator)
++  #dpf__add_lv2_ttl_generator()
++  #add_dependencies("${NAME}-lv2" lv2_ttl_generator)
+ 
+   separate_arguments(CMAKE_CROSSCOMPILING_EMULATOR)
+ 
++  if(false)
+   add_custom_command(TARGET "${NAME}-lv2" POST_BUILD
+     COMMAND
+     ${CMAKE_CROSSCOMPILING_EMULATOR}
+-    "$<TARGET_FILE:lv2_ttl_generator>"
++    #"$<TARGET_FILE:lv2_ttl_generator>"
+     "$<TARGET_FILE:${NAME}-lv2>"
+     WORKING_DIRECTORY "${PROJECT_BINARY_DIR}/bin/${NAME}.lv2"
+     DEPENDS lv2_ttl_generator)
++  endif()
+ endfunction()
+ 
+ # dpf__build_vst2
