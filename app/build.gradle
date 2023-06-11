@@ -54,9 +54,7 @@ android {
 dependencies {
     implementation libs.aap.lv2
     implementation libs.aap.core
-    implementation libs.aap.midi.device.service
     implementation libs.aap.ui.compose
-    implementation libs.aap.ui.web
 
     testImplementation libs.junit
     androidTestImplementation libs.aap.testing

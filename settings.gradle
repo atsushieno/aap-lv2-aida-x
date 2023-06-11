@@ -1,2 +1,5 @@
 rootProject.name = "aap-lv2-aida-x"
 include ":app"
+// enable these lines (and make changes to build.gradle) if you want to debug it
+//include ":androidaudioplugin-lv2"
+//project(":androidaudioplugin-lv2").projectDir = new File("external/aap-lv2/androidaudioplugin-lv2")
