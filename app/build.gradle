@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion 33
+    namespace 'org.androidaudioplugin.ports.lv2.aida_x'
+    compileSdk = 33
     defaultConfig {
         applicationId "org.androidaudioplugin.ports.lv2.aida_x"
-        minSdkVersion 29
-        targetSdkVersion 33
+        minSdk = 29
         versionCode 1
         versionName libs.versions.aap.lv2.get()
         ndk {
@@ -48,6 +48,9 @@ android {
         //doNotStrip "*/*/*.so"
         if (enable_asan)
             jniLibs.useLegacyPackaging = true
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 }
 
