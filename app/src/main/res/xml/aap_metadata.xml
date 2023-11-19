@@ -1,11 +1,11 @@
 <plugins xmlns="urn:org.androidaudioplugin.core" xmlns:pp="urn:org.androidaudioplugin.port">
   <plugin backend="LV2" name="AIDA-X" category="Effect" developer="AIDA DSP" unique-id="lv2:http://aidadsp.cc/plugins/aidadsp-bundle/rt-neural-loader" library="libandroidaudioplugin-lv2.so" entrypoint="GetAndroidAudioPluginFactoryLV2Bridge" gui:ui-view-factory="org.androidaudioplugin.ui.compose.ComposeAudioPluginViewFactory" xmlns:gui="urn://androidaudioplugin.org/extensions/gui" >
     <extensions>
-      <extension uri='urn://androidaudioplugin.org/extensions/plugin-info/v2' />
-      <extension uri='urn://androidaudioplugin.org/extensions/state/v2' />
-      <extension uri='urn://androidaudioplugin.org/extensions/parameters/v2.1' />
-      <extension uri='urn://androidaudioplugin.org/extensions/midi/v2' />
-      <extension uri='urn://androidaudioplugin.org/extensions/gui/v2' />
+      <extension uri='urn://androidaudioplugin.org/extensions/plugin-info/v3' />
+      <extension uri='urn://androidaudioplugin.org/extensions/state/v3' />
+      <extension uri='urn://androidaudioplugin.org/extensions/parameters/v3' />
+      <extension uri='urn://androidaudioplugin.org/extensions/midi/v3' />
+      <extension uri='urn://androidaudioplugin.org/extensions/gui/v3' />
     </extensions>
     <ports>
       <port direction='input' content='audio' name='Audio Input 1' />
