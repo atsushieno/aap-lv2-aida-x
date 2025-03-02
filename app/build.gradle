@@ -5,10 +5,10 @@ plugins {
 
 android {
     namespace 'org.androidaudioplugin.ports.lv2.aida_x'
-    compileSdk = 34
+    compileSdk = libs.versions.android.compileSdk.get().toInteger()
     defaultConfig {
         applicationId "org.androidaudioplugin.ports.lv2.aida_x"
-        minSdk = 29
+        minSdk = libs.versions.android.minSdk.get().toInteger()
         versionCode 1
         versionName libs.versions.aap.lv2.get()
         ndk {
@@ -71,8 +71,5 @@ dependencies {
      */
 
     testImplementation libs.junit
-    androidTestImplementation libs.test.core
-    androidTestImplementation libs.test.rules
-    androidTestImplementation libs.test.runner
     androidTestImplementation libs.test.ext.junit
 }
